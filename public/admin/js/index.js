@@ -1,7 +1,4 @@
 $(function() {
-
-
-  
   var myChart = echarts.init(document.querySelector('.charts01'))
   // 后台返回的数据
   var info = {

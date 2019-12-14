@@ -103,3 +103,6 @@ a:hover {
   width: 45%;
   height: 500px;
 }
+#page {
+  float: right;
+}
