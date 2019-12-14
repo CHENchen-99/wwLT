@@ -79,76 +79,44 @@
             <!-- 坑坑坑 -->
           </tbody>
         </table>
-        <!-- 分页的盒子，里面的内容将来自动渲染 -->
-        <ul id="page"></ul>
-      </div>
-    </div>
 
-    <!-- 退出模态框 -->
-    <div class="modal fade logoutModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="modal-title">温馨提示</h4>
-          </div>
-          <div class="modal-body">
-            <p class="text-danger">
-              <span class="glyphicon glyphicon-info-sign"></span
-              >你确定要退出本系统吗?
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">
-              取消
-            </button>
-            <button type="button" class="btn btn-primary btn-sure">确定</button>
-          </div>
+          <!-- 退出 -->
+  <div class="modal fade logoutModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">温馨提示</h4>
         </div>
-        <!-- /.modal-content -->
-      </div>
-      <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
-    <!-- 模态框 -->
-    <div class="modal fade userModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="modal-title">温馨提示</h4>
-          </div>
-          <div class="modal-body">
-            <p class="text-danger">
-              <span class="glyphicon glyphicon-info-sign"></span>
-              你确定要执行该操作吗?
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">
-              取消
-            </button>
-            <button type="button" class="btn btn-primary btn-change">
-              确定
-            </button>
-          </div>
+        <div class="modal-body">
+          <p class="text-danger"><span class="glyphicon glyphicon-info-sign"></span>你确定要退出本系统吗?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary btn-sure">确定</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <div class="modal fade userModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">温馨提示</h4>
+        </div>
+        <div class="modal-body">
+          <p class="text-danger"><span class="glyphicon glyphicon-info-sign"></span>你确定要执行该操作吗?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary btn-change">确定</button>
         </div>
       </div>
     </div>
+  </div>
+       
 
     <script src="lib/jquery/jquery.js"></script>
     <script src="lib/bootstrap/js/bootstrap.js"></script>
@@ -156,25 +124,7 @@
     <script src="lib/artTemplate/template-web.js"></script>
     <script src="lib/bootstrap-paginator/bootstrap-paginator.js"></script>
     <script src="js/common.js"></script>
-    <script src="js/user.js"></script>
+    <script src="js/first.js"></script>
 
-    <script type="text/html" id="tpl">
-      {{each rows v i }}
-      <tr>
-        <td>{{(page-1) * size + i + 1}}</td>
-        <td>{{v.username}}</td>
-        <td>{{v.mobile}}</td>
-        <!-- 1. 正常 0：禁用 -->
-        <td>{{v.isDelete === 1 ? '正常':'禁用'}}</td>
-        <td >
-          {{if v.isDelete === 0}}
-          <button class="btn btn-success" data-id="{{v.id}}">启用</button>
-          {{else}}
-          <button class="btn btn-danger" data-id="{{v.id}}">禁用</button>
-          {{/if}}
-        </td>
-      </tr>
-      {{/each}}
-    </script>
   </body>
 </html>
