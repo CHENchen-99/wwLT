@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>wwletao</title>
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="lib/bootstrap-validator/css/bootstrapValidator.css">
     <link rel="stylesheet" href="lib/nprogress/nprogress.css" />
     <link rel="stylesheet" href="css/common.css" />
   </head>
@@ -65,20 +66,44 @@
         </ol>
 
         <!-- 具体的内容 -->
-        <table class="table table-bordered table-striped">
+        <button class="btn btn-default btn-add">添加分类</button>
+
+        <table class="table table-bordered">
           <thead>
             <tr>
-              <th>序号</th>
-              <th>用户名</th>
-              <th>手机号</th>
-              <th>状态</th>
-              <th width="20%">操作</th>
+              <th width="20%">序号</th>
+              <th>一级分类名称</th>
             </tr>
           </thead>
           <tbody>
-            <!-- 坑坑坑 -->
+            
           </tbody>
         </table>
+        <!-- 分页 -->
+        <ul id="page"></ul>
+
+        <!-- 添加分类 -->
+      <div class="modal fade addModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">添加分类</h4>
+            </div>
+            <form>
+              <div class="modal-body">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="categoryName" placeholder="请输入一级分类名称">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="submit" class="btn btn-primary">确定</button>
+              </div>
+            </form>
+          </div>
+        </div>
+       </div>
 
           <!-- 退出 -->
   <div class="modal fade logoutModal" tabindex="-1" role="dialog">
@@ -95,10 +120,10 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
           <button type="button" class="btn btn-primary btn-sure">确定</button>
         </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
+      </div>
+    </div>
+  </div>
+          <!-- 确定退出 -->
   <div class="modal fade userModal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
@@ -116,15 +141,26 @@
       </div>
     </div>
   </div>
-       
 
-    <script src="lib/jquery/jquery.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.js"></script>
-    <script src="lib/nprogress/nprogress.js"></script>
-    <script src="lib/artTemplate/template-web.js"></script>
-    <script src="lib/bootstrap-paginator/bootstrap-paginator.js"></script>
-    <script src="js/common.js"></script>
-    <script src="js/first.js"></script>
 
+
+  <script type="text/html" id="tpl">
+    {{each rows v i }}
+    <tr>
+      <!-- 加上了前面的所有页的条数 -->
+      <td>{{(page - 1) * size + i+1}}</td>
+      <td>{{v.categoryName}}</td>
+    </tr>
+    {{/each}}
+  </script>
+
+  <script src="lib/jquery/jquery.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.js"></script>
+  <script src="lib/nprogress/nprogress.js"></script>
+  <script src="lib/artTemplate/template-web.js"></script>
+  <script src="lib/bootstrap-paginator/bootstrap-paginator.js"></script>
+  <script src="lib/bootstrap-validator/js/bootstrapValidator.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/first.js"></script>
   </body>
 </html>
