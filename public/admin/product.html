@@ -34,13 +34,13 @@
               <span>分类管理</span>
             </a>
             <!-- 二级菜单 -->
-            <div class="second" style="display: block;">
-              <a href="first.html" class="now">一级分类</a>
+            <div class="second" style="display: none;">
+              <a href="first.html">一级分类</a>
               <a href="second.html">二级分类</a>
             </div>
           </li>
           <li>
-            <a href="product.html">
+            <a href="product.html" class="now">
               <span class="glyphicon glyphicon-tags"></span>
               <span>商品管理</span>
             </a>
@@ -62,49 +62,16 @@
         <!-- 面包屑 -->
         <ol class="breadcrumb">
           <li><a href="index.html">管理系统</a></li>
-          <li><a>分类管理</a></li>
-          <li>一级分类</li>
+          <li>商品管理</li>
         </ol>
 
         <!-- 具体的内容 -->
-        <button class="btn btn-default btn-add">添加分类</button>
+       
 
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th width="20%">序号</th>
-              <th>一级分类名称</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-          </tbody>
-        </table>
-        <!-- 分页 -->
-        <ul id="page"></ul>
 
-        <!-- 添加分类 -->
-      <div class="modal fade addModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-sm" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">添加分类</h4>
-            </div>
-            <form>
-              <div class="modal-body">
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="categoryName" placeholder="请输入一级分类名称">
-                  </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="submit" class="btn btn-primary">确定</button>
-              </div>
-            </form>
-          </div>
-        </div>
-       </div>
+
+
+
 
           <!-- 退出 -->
   <div class="modal fade logoutModal" tabindex="-1" role="dialog">

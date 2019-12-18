@@ -63,14 +63,11 @@ $(function () {
         if (info.success) {
           $('.addModal').modal('hide')
           $('form').data('bootstrapValidator').resetForm(true)
+          //重第一页开始渲染
           page=1
           render()
         }
       }
-
     })
   })
-
-
-
 })

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>wwletao</title>
@@ -35,8 +35,8 @@
             </a>
             <!-- 二级菜单 -->
             <div class="second" style="display: block;">
-              <a href="first.html" class="now">一级分类</a>
-              <a href="second.html">二级分类</a>
+              <a href="first.html">一级分类</a>
+              <a href="second.html" class="now">二级分类</a>
             </div>
           </li>
           <li>
@@ -63,10 +63,11 @@
         <ol class="breadcrumb">
           <li><a href="index.html">管理系统</a></li>
           <li><a>分类管理</a></li>
-          <li>一级分类</li>
+          <li>二级分类</li>
         </ol>
 
         <!-- 具体的内容 -->
+       
         <button class="btn btn-default btn-add">添加分类</button>
 
         <table class="table table-bordered">
@@ -74,6 +75,8 @@
             <tr>
               <th width="20%">序号</th>
               <th>一级分类名称</th>
+              <th>二级分类名称</th>
+              <th>二级分类LOGO</th>
             </tr>
           </thead>
           <tbody>
@@ -94,7 +97,31 @@
             <form>
               <div class="modal-body">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="categoryName" placeholder="请输入一级分类名称">
+                    <!-- 因为dropdown不属于表单元素,所以表单序列化获取不到 -->
+                    <!-- 所以要搞一个隐藏的input框,指定name属性,要在用户选择1级分类的时候修改隐藏的input框的值 -->
+                    <input type="text" name="categoryId" class="hidden">
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                          <span class="text">请选择一级分类</span>
+                          <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <!-- 挖个坑 -->
+                        </ul>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="categoryName" placeholder="请输入二级分类名称">
+                  </div>
+                  <div class="form-group">
+                    <!-- input type:file能上传文件 但是太丑了 所以加上btn btn-default -->
+                    <label for="file" class="btn btn-default">上传图片</label>
+                    <!-- 要指定name属性,data-url:指定图片上传的地址 -->
+                    <input type="file" multiple id="file" name="pic1" data-url="/category/addSecondCategoryPic" class="hidden">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="brandLogo" class="hidden">
+                    <img src="images/none.png" class="brandLogo" width="100" alt="">
                   </div>
               </div>
               <div class="modal-footer">
@@ -105,6 +132,10 @@
           </div>
         </div>
        </div>
+
+
+
+
 
           <!-- 退出 -->
   <div class="modal fade logoutModal" tabindex="-1" role="dialog">
@@ -144,16 +175,25 @@
   </div>
 
 
-
+<!-- 这个是分类页的模板 -->
   <script type="text/html" id="tpl">
     {{each rows v i }}
     <tr>
       <!-- 加上了前面的所有页的条数 -->
       <td>{{(page - 1) * size + i+1}}</td>
       <td>{{v.categoryName}}</td>
+      <td>{{v.brandName}}</td>
+      <td><img width="50" height="50" src="{{v.brandLogo}}" alt=""></td>
     </tr>
     {{/each}}
   </script>
+
+<!-- 下拉菜单的模板 -->
+<script type="text/html" id="tpl">
+  {{each rows v i }}
+<li><a href="#" data-id="{{v.id}}"> {{v.categoryName}} </a></li>
+  {{/each}}
+</script>
 
   <script src="lib/jquery/jquery.js"></script>
   <script src="lib/bootstrap/js/bootstrap.js"></script>
@@ -165,3 +205,13 @@
   <script src="js/first.js"></script>
   </body>
 </html>
+
+
+<!-- 这一页模态框里多出有隐藏,下拉菜单/上传图片/上传图片下面的图片都是加了个hidden -->
+ <!-- input type:file能上传文件 但是太丑了 所以加上btn btn-default -->
+ <!-- <label for="file" class="btn btn-default">上传图片</label> -->
+ <!-- 要指定name属性,data-url:指定图片上传的地址 -->
+
+
+
+
